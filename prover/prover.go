@@ -229,9 +229,8 @@ func (p *Prover) proveOp() error {
     iter, err := eventIterator.NewBlockProposedIterator(p.ctx, &eventIterator.BlockProposedIteratorConfig{
         Client:               p.rpc.L1,
         TaikoL1:              p.rpc.TaikoL1,
-        StartHeight:          new(big.Int).SetUint64(p.l1Head),
-        EndHeight:            new(big.Int).SetUint64(p.l1Current),
-        Reverse:             true,
+        StartHeight:          new(big.Int).SetUint64(p.l1Current),
+        Reverse:               true,
         OnBlockProposedEvent: p.onBlockProposed,
     })
 	if err != nil {
